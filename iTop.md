@@ -1,4 +1,4 @@
-#Instalacion de iTop 2.7.1
+# Instalacion de iTop 2.7.1
 ***
 En este documento se mostrara como instalar iTop en una version 2.7.1
 
