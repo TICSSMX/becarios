@@ -80,4 +80,13 @@ innodb_default_row_format = DYNAMIC
 innodb_large_prefix = true
 ```
 ***
+### Instalación de iTop
+*** 
+** Para descargar el archivo de iTop y descomprimirlo se debe estar en la ruta var/www/html**
+
+```
+-sudo wget https://sourceforge.net/projects/itop/files/itop/2.7.1/iTop-2.7.1-5896.zip
+sudo unzip iTop-2.7.1-5896.zip
+```
+
 
