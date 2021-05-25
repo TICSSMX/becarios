@@ -85,8 +85,19 @@ innodb_large_prefix = true
 ** Para descargar el archivo de iTop y descomprimirlo se debe estar en la ruta var/www/html**
 
 ```
--sudo wget https://sourceforge.net/projects/itop/files/itop/2.7.1/iTop-2.7.1-5896.zip
+sudo wget https://sourceforge.net/projects/itop/files/itop/2.7.1/iTop-2.7.1-5896.zip
 sudo unzip iTop-2.7.1-5896.zip
 ```
+***
+**SE INGRESA LA IP DE NUESTRA MAQUINA VIRTUAL (10.0.0.29/web) PARA PODER ACCEDER A LA PANTALLA DE INSTALACION DE ITOP, LO MAS SEGURO ES QUE APAREZCAN 5 ERRORES DE CARPETAS QUE NO TIENEN PERMISOS DE ESCRITURA Y QUE NO EXISTEN.
+SE DEBERAN CREAR EN VAR/WWW/HTML/WEB **
 
+
+**Ejemplo**
+```PARA CREAR LA CARPETA ES
+sudo mkdir log
+
+PARA PERMISOS ES
+sudo chmod –R 777 log
+```
 
