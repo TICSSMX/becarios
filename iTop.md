@@ -4,7 +4,7 @@ En este documento se mostrara como instalar iTop en una version 2.7.1
 
 ***
 
-#Pre-requisitos necesarios para la instalación
+## Pre-requisitos necesarios para la instalación
 ***
 
 -Servidor web apache2
@@ -13,7 +13,7 @@ En este documento se mostrara como instalar iTop en una version 2.7.1
 
 ***
 
-#Instalación del servidor apache
+### Instalación del servidor apache
 ***
 
 Inserte codigo de instalación
