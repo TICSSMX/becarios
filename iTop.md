@@ -26,19 +26,29 @@ sudo apt-get update
 ### Instalación del servidor apache
 ***
 
-Inserte codigo de instalación
+```
+apt-get install apache2
 
+```
 ***
 
 #Instalacion de Mysql y sus parametros
 
 ***
-Inserte codigo para la instalacion de Mysql ver 8.0
+```
+apt-get install mysql-server
+
+```
 
 ***
 
 #Instalación de php 7.4
 ***
 
-Inserte codigo para la instlación de php ver 7.4
+```
+apt-get install php php-mysql php-ldap php-cli php-soap php-json graphviz
+apt-get install php-xml php-gd php-zip libapache2-mod-php php-mbstring
 
+
+```
+***
