@@ -486,30 +486,31 @@ sudo chown -R magento:www-data /var/www/html/
 ```
 
 ## 2. Obtener el metapaquete
-Usamos Composer para administrar los componentes de Magento y sus dependencias
-Descargar e instalar composer:
-EL comando descargarán Composer de su página de mantenimiento y lo instalarán en el directorio _/usr/local/bin_ , este es un directorio global local para ejecutables de aplicaciones.
-```
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-```
+La descarga de un archivo de almacenamiento le permite ejecutar el software Magento en un servidor local. Puede descargarlo en formato zip o tar. También puede optar por incluir datos de muestra, o no, con su descarga.
+
 **Para obtener el metapaquete de Magento:**
- 1.	Inicie sesión en su servidor Magento o cambie al propietario del sistema de archivos Magento.
+1.	Descargue desde la pagina de [releases de magento]( https://magento.com/tech-resources/download) el metapaquete. El utilizado para esta guía específicamente es la versión: _ver 2.4.0_, Formato: _Magento Open Source 2.4.0 with Sample Data.tar.gz_ que incluye una muestra de datos simples. 
+Este archivo debe estar en su servidor de Magento.
+_**Nota: Debe tener creada una cuenta de en el sitio web de magento para poder realizar la descarga.**_
+2.	Inicie sesión en su servidor Magento y cambie al propietario del sistema de archivos Magento.
 ```
 su magento
 ```
- 2.	Cambie al directorio docroot del servidor web o un directorio que haya configurado como un docroot de host virtual.
+3.	Cambie al directorio docroot del servidor web o un directorio que haya configurado como un docroot de host virtual.
 ```
 cd /var/www/html/
 ```
- 3.	Cree un nuevo proyecto de Composer utilizando el metapaquete de Magento Open Source o Magento Commerce.
+4.	Cree una carpeta donde se va a descomprimir el metapaquete, puede llamarle _magento_, accede a ella y pegue dentro de este directorio el archivo a descomprimir. 
 ```
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento
+mkdir magento
+cd magento
 ```
-Durante la configuración, se le pedirá un nombre de usuario y una contraseña. Para que quede claro, Nombre de usuario = Clave pública y Contraseña = Clave privada obtenidas de la cuenta de Magento Marketplace
+5.	descomprima el metapaquete:
 ```
-Public Key: 44e09e45efe15d4c90b70c0370886dbd
-Private Key: cd9275d55beb9895558edc091a0178c8
+tar -xzvf magento-ce-2.4.0_sample_data-2020-07-26-02-51-57.tar.gz
 ```
+
+
 **Establecer permisos de archivo**
 
 Debe establecer permisos de lectura y escritura para el grupo de servidores web antes de instalar el software Magento. Esto es necesario para que la línea de comandos pueda escribir archivos en el sistema de archivos de Magento.
@@ -526,13 +527,14 @@ chown -R :www-data .
 chmod u+x bin/magento
 ```
 
-Para ejecutar comandos de Magento desde cualquier directorio, agregue _<magento_root>/bin_ a su sistema PATH.
+Para ejecutar comandos de Magento desde cualquier directorio, agregue __/var/www/html/magento/bin__ a su sistema PATH.
 ```
 export PATH=$PATH:/var/www/html/magento/bin
 ```
-**Instale Magento desde la línea de comandos .**
+O bien acceda a _/var/www/html/magento/bin_ y ejecute con ```./magento```
 
-En este ejemplo se supone que el directorio de instalación de Magento es nombrado magento, el db-host está en la misma máquina (localhost), y que el db-name, db-usery son magento: 
+**Instale Magento desde la línea de comandos .**
+En este ejemplo se supone que el directorio de instalación de Magento es nombrado magento, el db-host está en la misma máquina (localhost), y que el db-name, db-usery son magento, las credenciales del administrador son admin-user=admin y admin-password=admin123: 
 ```
 ./magento setup:install \
 --base-url=http://magento.ticss.ddns.net/magento \
@@ -551,10 +553,34 @@ En este ejemplo se supone que el directorio de instalación de Magento es nombra
 --use-rewrites=1
 ```
 
+Al terminar la instalación obtendrá una salida parecida que indica que el proceso de instalación a finalizado:
+```
+[SUCCESS]: Magento installation complete.
+[SUCCESS]: Magento Admin URI: /admin_n9ohxv
+Nothing to import.
+```
+Esta línea indica la direccion para poder ingresar al panel de administración.
+```
+[SUCCESS]: Magento Admin URI: /admin_n9ohxv`
+```
+Es posible que vea un error de autenticación de inicio de sesión de administrador cuando vaya a la página del panel de administración.
+Este error ocurrió porque desde Magento 2.4, la Autorización de dos factores está habilitada de forma predeterminada.
+Ejecute este comando para deshabilitarla
+```
+magento module:disable Magento_TwoFactorAuth
+```
+
 ## 3. Verificar la instalación
 Vaya al escaparate en un navegador web. Ingrésela en la dirección o barra de ubicación de su navegador.
 ```
 http://magento.ticss.ddns.net/magento
 ```
 
+Para ingresar al panel de administración ingrese la url correspondiente:
+```
+http://magento.ticss.ddns.net/magento/admin_n9ohxv
+```
+Debe ingresar con las credenciales que especifico al momento de instalar, en este caso:
+- username: _admin_
+- Password: _admin123_
 
