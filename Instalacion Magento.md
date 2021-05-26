@@ -485,7 +485,7 @@ Actualice la propiedad de la carpeta y el grupo para que coincida con nuestro nu
 sudo chown -R magento:www-data /var/www/html/
 ```
 
-## 2. Obtener el metapaquete
+## 2. Obtener el metapaquete e instalar Magento
 La descarga de un archivo de almacenamiento le permite ejecutar el software Magento en un servidor local. Puede descargarlo en formato zip o tar. También puede optar por incluir datos de muestra, o no, con su descarga.
 
 **Para obtener el metapaquete de Magento:**
@@ -533,7 +533,8 @@ export PATH=$PATH:/var/www/html/magento/bin
 ```
 O bien acceda a _/var/www/html/magento/bin_ y ejecute con ```./magento```
 
-**Instale Magento desde la línea de comandos .**
+**Instale Magento desde la línea de comandos**
+
 En este ejemplo se supone que el directorio de instalación de Magento es nombrado magento, el db-host está en la misma máquina (localhost), y que el db-name, db-usery son magento, las credenciales del administrador son admin-user=admin y admin-password=admin123: 
 ```
 ./magento setup:install \
