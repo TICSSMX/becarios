@@ -387,12 +387,12 @@ Ahora haga lo mismo con node.name, recordando eliminar el " #" anterior y luego 
 
 3.	Actualización del host de red
 
-Finalmente haz lo mismo con _network.host_, reemplazando la IP (“192.168.0.1”) por 10.0.0.25
+Finalmente haz lo mismo con _network.host_, reemplazando la IP (“192.168.0.1”) por la ip de tu servidor.
 
 Descomentar _http.port: 9200_
 
 Ahora guarde sus cambios y salga del editor.
-Recarga tus cambios
+
 Para que esos 3 cambios surtan efecto, vuelva a cargar el servicio Elasticsearch ejecutando:
 ```
 sudo systemctl restart elasticsearch
